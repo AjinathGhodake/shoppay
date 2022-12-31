@@ -43,18 +43,18 @@ export default function Top() {
                     >
                         {
                             loggedIn ? (
-                                <li className={styles.top__option}>
+                                <div className={styles.top__option}>
                                     <Image src="https://www.pngarts.com/files/5/User-Avatar-PNG-Transparent-Image.png" height={20} width={30} alt="" />
                                     <span className={styles.top__title}>Ajinath</span>
                                     <RiArrowDropDownFill />
 
-                                </li>
+                                </div>
                             ) : (
-                                <li className={styles.top__option}>
+                                <div className={styles.top__option}>
                                     <RiAccountPinCircleLine />
                                     <span className={styles.top__title}>Account</span>
                                     <RiArrowDropDownFill />
-                                </li>
+                                </div>
                             )}
                         {isVisible && <UserMenu loggedIn={loggedIn} />}
                     </li>
