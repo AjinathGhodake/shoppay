@@ -5,8 +5,10 @@ import { RiAccountPinCircleLine, RiArrowDropDownFill, } from 'react-icons/ri';
 import { BsSuitHeart } from 'react-icons/bs';
 import Link from 'next/link';
 import { useState } from 'react';
+import UserMenu from './UserMenu';
 export default function Top() {
-    const [loggedIn, setLoggerIn] = useState(true);
+    const [loggedIn, setLoggerIn] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
     return (
         <div className={styles.top}>
             <div className={styles.top__container}>
@@ -35,21 +37,27 @@ export default function Top() {
                         </Link>
 
                     </li>
-                    {
-                        loggedIn ? (
-                            <li className={styles.top__option}>
-                                <Image src="https://www.pngarts.com/files/5/User-Avatar-PNG-Transparent-Image.png" height={20} width={30} alt="" />
-                                <span className={styles.top__title}>Ajinath</span>
-                                <RiArrowDropDownFill />
+                    <li className={styles.top__option}
+                        onMouseOver={() => setIsVisible(true)}
+                        onMouseLeave={() => setIsVisible(false)}
+                    >
+                        {
+                            loggedIn ? (
+                                <li className={styles.top__option}>
+                                    <Image src="https://www.pngarts.com/files/5/User-Avatar-PNG-Transparent-Image.png" height={20} width={30} alt="" />
+                                    <span className={styles.top__title}>Ajinath</span>
+                                    <RiArrowDropDownFill />
 
-                            </li>
-                        ) : (
-                            <li className={styles.top__option}>
-                                <RiAccountPinCircleLine />
-                                <span className={styles.top__title}>Account</span>
-                                <RiArrowDropDownFill />
-                            </li>
-                        )}
+                                </li>
+                            ) : (
+                                <li className={styles.top__option}>
+                                    <RiAccountPinCircleLine />
+                                    <span className={styles.top__title}>Account</span>
+                                    <RiArrowDropDownFill />
+                                </li>
+                            )}
+                        {isVisible && <UserMenu loggedIn={loggedIn} />}
+                    </li>
                 </ul>
             </div>
         </div>

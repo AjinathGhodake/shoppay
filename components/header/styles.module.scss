@@ -71,10 +71,6 @@
             color: #222;
         }
 
-        svg {
-            fill: #666;
-        }
-
         @media (max-width:670px) {
 
             &:nth-of-type(2),
@@ -89,6 +85,59 @@
         margin-left: 8px;
         font-size: 12px;
     }
+}
 
+.menu {
+    width: 280px;
+    position: absolute;
+    top: 100%;
+    box-shadow: $shadow-1;
+    right: 0;
+    background-color: #fff;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
 
+    h4 {
+        text-align: center;
+    }
+}
+
+.flex {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    padding: 0 1rem;
+    align-items: center;
+    align-content: flex-start;
+}
+
+.sub-menu {
+    .sub-menu-option {
+        padding: 2px 0;
+
+        a {
+            width: 100%;
+            padding-left: 1rem;
+        }
+
+        &:hover {
+            background-color: #eeeeeebe;
+        }
+    }
+}
+
+.profile-menu {
+    display: flex;
+    flex-direction: column;
+
+    span {
+        &:last-of-type {
+            font-size: 14px;
+            text-decoration: underline;
+            color: $blue-color;
+        }
+    }
 }
