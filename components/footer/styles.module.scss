@@ -1,0 +1,167 @@
+.footer {
+    background-color: #f8f8f8;
+
+    &__container {
+        display: grid;
+        width: 100%;
+        position: relative;
+        gap: 3rem;
+        padding: 1rem;
+        grid-template-areas: "payment" "links" "socials" "newsletter" "copyright";
+
+        @media (min-width:800px) {
+            grid-template-areas:
+                "links socials"
+                "links newsletter"
+                "copyright payment";
+        }
+
+        @media (min-width:1200px) {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    }
+
+    &__links {
+        grid-template-columns: repeat(3, 1fr);
+        display: grid;
+        grid-area: links;
+        gap: 1rem;
+
+        ul {
+            padding: 4px;
+
+            Image {
+                object-fit: cover;
+            }
+
+            b {
+                text-transform: uppercase;
+            }
+
+            li {
+                font-size: 12px;
+                color: #666;
+                line-height: 24px;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    h3 {
+        font-size: 12px;
+        font-weight: 700;
+        color: #222;
+    }
+
+    &__flex {
+        display: flex;
+        margin-top: 10px;
+    }
+
+    &__socials {
+        grid-area: socials;
+
+        section {
+            ul {
+                margin-top: 10px;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+
+                li {
+                    font-size: 2rem;
+                    color: #666;
+
+                    &:hover {
+                        color: $blue-color;
+                    }
+                }
+            }
+
+        }
+    }
+
+    &__news-letter {
+        grid-area: newsletter;
+
+        input {
+            outline: none;
+            border: 1px solid #999;
+            flex: 1;
+            height: 40px;
+            font-style: 14px;
+            padding-left: 10px;
+        }
+
+        button {
+            width: 150px;
+        }
+
+        p {
+            margin-top: 10px;
+            color: #666;
+            font-style: 12px;
+        }
+
+        a {
+            color: $blue-color;
+            text-decoration: underline;
+        }
+    }
+
+    &__payment {
+        grid-area: payment;
+    }
+
+    &__flexwrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 1rem;
+
+        Image {
+            object-fit: cover;
+        }
+    }
+
+    &__copyright {
+        grid-area: copyright;
+
+        section {
+            font-style: 12px;
+            color: #666;
+            padding-bottom: 10px;
+        }
+
+        ul {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            column-gap: 2rem;
+
+            li {
+                text-decoration: underline;
+                position: relative;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    height: 16px;
+                    width: 1px;
+                    background-color: #666;
+                    right: -1rem;
+                }
+
+                &:last-of-type::after {
+                    display: none;
+                }
+            }
+
+        }
+
+    }
+}
