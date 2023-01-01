@@ -6,7 +6,8 @@ import { BsSuitHeart } from 'react-icons/bs';
 import Link from 'next/link';
 import { useState } from 'react';
 import UserMenu from './UserMenu';
-export default function Top() {
+export default function Top({ country }: any) {
+
     const [loggedIn, setLoggerIn] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
     return (
@@ -15,8 +16,8 @@ export default function Top() {
                 <div></div>
                 <ul className={styles.top__list}>
                     <li className={styles.top__option}>
-                        <Image height={28} width={28} src="https://www.seekpng.com/png/detail/323-3232715_morocco-flag-png-angel-tube-station.png" alt="" />
-                        <span className={styles.top__title}>USD</span>
+                        <Image height={28} width={28} src={country?.flag} alt="" />
+                        <span className={styles.top__title}>{country?.name}/INR</span>
                     </li>
                     <li className={styles.top__option}>
                         <MdSecurity />
