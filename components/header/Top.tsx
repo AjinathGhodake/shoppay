@@ -6,9 +6,10 @@ import { BsSuitHeart } from 'react-icons/bs';
 import Link from 'next/link';
 import { useState } from 'react';
 import UserMenu from './UserMenu';
+import { useSession } from 'next-auth/react';
 export default function Top({ country }: any) {
 
-    const [loggedIn, setLoggerIn] = useState(false);
+    const { data: session } = useSession();
     const [isVisible, setIsVisible] = useState(false);
     return (
         <div className={styles.top}>
@@ -43,10 +44,10 @@ export default function Top({ country }: any) {
                         onMouseLeave={() => setIsVisible(false)}
                     >
                         {
-                            loggedIn ? (
+                            session ? (
                                 <div className={styles.top__option}>
-                                    <Image src="https://www.pngarts.com/files/5/User-Avatar-PNG-Transparent-Image.png" height={20} width={30} alt="" />
-                                    <span className={styles.top__title}>Ajinath</span>
+                                    <Image src={session && session?.user && session?.user?.image ? session?.user?.image : 'placeholder'} height={20} width={30} alt="" />
+                                    <span className={styles.top__title}>{session?.user?.name}</span>
                                     <RiArrowDropDownFill />
 
                                 </div>
@@ -57,7 +58,7 @@ export default function Top({ country }: any) {
                                     <RiArrowDropDownFill />
                                 </div>
                             )}
-                        {isVisible && <UserMenu loggedIn={loggedIn} />}
+                        {isVisible && <UserMenu session={session} />}
                     </li>
                 </ul>
             </div>
