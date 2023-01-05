@@ -17,7 +17,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        max-width: 370px;
+        max-width: 300px;
 
         .back__svg {
             width: 50px;
@@ -54,6 +54,24 @@
                 border-bottom: 1px solid $blue-color;
                 padding-bottom: 5px;
             }
+        }
+    }
+
+    &__form {
+        margin-top: 1rem;
+
+        h1 {
+            font-style: 50px;
+            margin: 0;
+        }
+
+        p {
+
+            color: #96979b;
+        }
+
+        form {
+            margin-top: 2rem;
         }
     }
 }
