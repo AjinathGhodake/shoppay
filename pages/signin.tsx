@@ -15,7 +15,7 @@ export default function signin() {
               <BiLeftArrowAlt />
             </div>
             <span>
-              We'd be happy to join us ! <Link href="/">Go Store</Link>
+              We'd be happy to join us! <Link href="/">Go Store</Link>
             </span>
           </div>
         </div>
