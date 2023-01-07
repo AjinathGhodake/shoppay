@@ -73,5 +73,9 @@
         form {
             margin-top: 2rem;
         }
+
+        &__error {
+            background-color: red;
+        }
     }
 }

@@ -5,6 +5,7 @@ import styles from '../styles/signin.module.scss';
 import { BiLeftArrowAlt } from "react-icons/bi";
 import Link from 'next/link';
 import { Form, Formik } from 'formik';
+import * as Yup from 'yup';
 import LoginInput from '../components/inputs/loginInput';
 const initialValues = {
   loginEmail: "",
@@ -16,10 +17,12 @@ export default function SignIn() {
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
-    console.log(">>>>>", user);
   };
 
-  console.log(">>>>>", user);
+  const loginValidation = Yup.object().shape({
+    loginEmail: Yup.string().required("Email Address is required.").email("Please enter a valid Email Address"),
+    loginPassword: Yup.string().required("Password is required.")
+  });
 
   return (
     <>
@@ -39,7 +42,15 @@ export default function SignIn() {
             <p>
               Get access to one of the best Eshoping services in the world.
             </p>
-            <Formik>
+            <Formik
+              enableReinitialize
+              initialValues={{
+                loginEmail,
+                loginPassword
+              }}
+              validateOnChange={false}
+              validationSchema={loginValidation}
+            >
               {
                 (form) => (
                   <Form>
@@ -48,6 +59,13 @@ export default function SignIn() {
                       name="loginEmail"
                       icon="EMAIL"
                       placeholder='Email Address'
+                      onChange={handleChange}
+                    ></LoginInput>
+                    <LoginInput
+                      type="password"
+                      name="loginPassword"
+                      icon="PASSWORD"
+                      placeholder='Password'
                       onChange={handleChange}
                     ></LoginInput>
                   </Form>

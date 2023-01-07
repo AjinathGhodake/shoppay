@@ -34,3 +34,45 @@
         }
     }
 }
+
+.error {
+    background-color: $light-error-color;
+    margin-top: 5rem;
+
+    input {
+        color: #fff;
+
+        &::placeholder {
+            color: #fff;
+        }
+    }
+
+    svg {
+        fill: #fff;
+        stroke: #fff;
+    }
+
+    &__popup {
+        position: absolute;
+        top: -70px;
+        background: $error-color;
+        height: 60px;
+        width: 100%;
+        border-radius: 20px;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        font-weight: 700;
+        font-size: 14px;
+        padding: 10px;
+
+        span {
+            position: absolute;
+            bottom: -10px;
+            left: 1rem;
+            border-top: 10px solid $error-color;
+            border-right: 10px solid transparent;
+            border-left: 10px solid transparent;
+        }
+    }
+}
