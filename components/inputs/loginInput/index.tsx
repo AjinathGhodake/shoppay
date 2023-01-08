@@ -13,7 +13,6 @@ interface IProps {
 }
 export default function LoginInput({ icon, placeholder, ...props }: IProps) {
     const [field, meta] = useField(props);
-    console.log("Meta ", meta);
 
     return (
         <div className={`${styles.input} ${meta.touched && meta.error ? styles.error : ""}`}>
