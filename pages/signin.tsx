@@ -8,17 +8,21 @@ import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import LoginInput from '../components/inputs/loginInput';
 import CircledIconButton from '../components/buttons/circledIconButton';
+import { getProviders, signIn } from 'next-auth/react';
+import Image from 'next/image';
 const initialValues = {
   loginEmail: "",
   loginPassword: ""
 };
-export default function SignIn() {
+export default function Signin({ providers }: any) {
+  console.log('providers', providers);
   const [user, setUser] = useState(initialValues);
   const { loginEmail, loginPassword } = user;
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
+
 
   const loginValidation = Yup.object().shape({
     loginEmail: Yup.string().required("Email Address is required.").email("Please enter a valid Email Address"),
@@ -49,6 +53,7 @@ export default function SignIn() {
                 loginEmail,
                 loginPassword
               }}
+              onSubmit={() => { }}
               validateOnChange={false}
               validationSchema={loginValidation}
             >
@@ -77,6 +82,20 @@ export default function SignIn() {
                 )
               }
             </Formik>
+            <div className={styles.login__socials}>
+              <span className={styles['horizontal-line']}>Or continue with</span>
+              <div className={styles.login__socials_wrap}>
+                {providers.map((provider: any) => (
+                  <div key={provider.name}>
+                    <button className={styles.social__button} onClick={() => signIn(provider.id)}>
+                      <Image width={36} height={36} src={`/icons/${provider.name}.png`} alt="" />
+                      Sign in with {provider.name}
+                    </button>
+                  </div>
+                ))}
+              </div>
+
+            </div>
           </div>
         </div>
       </div>
@@ -85,3 +104,9 @@ export default function SignIn() {
   );
 }
 
+export async function getServerSideProps(context: any) {
+  const providers = Object.values(await getProviders() as any);
+  return {
+    props: { providers }
+  };
+}
