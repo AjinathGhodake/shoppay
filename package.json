@@ -13,16 +13,18 @@
     "@next/font": "13.1.1",
     "@reduxjs/toolkit": "^1.9.1",
     "@types/jest": "^29.2.4",
+    "@types/mongodb": "^4.0.7",
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
     "@types/react-redux": "^7.1.24",
     "axios": "^1.2.2",
+    "bcrypt": "^5.1.0",
     "eslint": "8.30.0",
     "eslint-config-next": "13.1.1",
     "formik": "^2.2.9",
     "mongodb": "^4.13.0",
-    "mongoose": "^6.8.2",
+    "mongoose": "^5.12.11",
     "next": "13.1.1",
     "next-auth": "^4.18.7",
     "next-connect": "^0.13.0",
@@ -40,6 +42,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/redux-persist": "^4.3.1"
   }
 }
